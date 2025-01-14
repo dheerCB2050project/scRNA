@@ -1,0 +1,33 @@
+
+
+
+# Run python interactively on dardel
+
+
+# Allocate computational time
+salloc -n 1 -t 01:00:00 -A naiss2024-22-757 -p shared  # this allocated 1 task (-n 1, for 1 h (-t 01:00:00)); change as necessary
+
+# It will ask for resources and asign you a node id (nidXXXXX)
+
+ssh -X nidXXXXXXX #connect to allocated node
+
+# Load necessary packages
+ml PDC/23.12
+ml anaconda3/2024.02-1-cpeGNU-23.12 # here you're loading the anaconda environment.
+
+# Go to working directory
+cd path/to/working/directory
+
+
+# Runs jupyter notebook
+jupyter notebook --ip 0.0.0.0 --no-browser
+
+
+
+#########
+### OPEN a new window in Terminal
+########
+
+ssh -L 8888:nidXXXXXXX:8888 username@dardel.pdc.kth.se #change the username to your username
+
+# copy and paste the jupyter notebook url to your browser, url is in the first window
